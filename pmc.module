@@ -1,0 +1,51 @@
+<?php 
+include 'includes/generador.inc';
+include 'includes/getFile.inc';
+//Modulo GENERICO: Este modulo concentra todas las funcionalidades que son de uso compartido por el resto de los modulos del sistema de gestion
+
+function pmc_init(){ 
+  //drupal_add_js(drupal_get_path('module', 'generico') . '/js/generico.js');
+
+} 
+
+function pmc_permission(){  
+  return array(
+    //PERMISOS PARA FORMULARIOS DE JUZGADOS
+    'acceso_generar_archivo'=>  array(
+      'title' => t('PMC - Generar archivo'),
+      'description' => t('Permisos para acceder a PMC - Generar archivo'),
+    ),
+
+); 
+}
+
+/**
+* Implements hook_help()
+*/
+
+function pmc_help($path, $arg){
+  switch ($path) {
+    case 'pmc/manage':
+      // Help text for the simple page registered for this path.
+      return t('This section displays the list of Pages.');
+  }
+}
+
+/**
+* Implements hook_menu()
+*/
+
+function pmc_menu()
+{
+  $items['pmc/generar_archivo'] = array(
+    'title' => 'GENERAR ARCHIVO',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('getFile_form'),
+    'access arguments' => array('acceso_generar_archivo'),
+    'expanded' => TRUE,
+  );
+  return $items;
+}
+
+?>
+ 

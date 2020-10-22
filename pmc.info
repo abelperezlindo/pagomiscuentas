@@ -1,0 +1,5 @@
+name = pmc
+description = Modulo generador de archivo para cobranza por Pago Mis Cuentas
+package = ideasOrange
+core = 7.x
+version = 7.x 
